@@ -365,7 +365,31 @@ Adds a new customer to the system and returns details of the added customer. If 
     "Email": "john@doe.com",
     "Phone": "00420123456789",
     "LoyaltyCode": null,
-    "Notes": null
+    "Notes": null,
+    "IdentityCard": {
+        "Number": "123456",
+        "Expiration": "2020-01-01",
+        "Issuance": "2016-01-01",
+        "IssuingCountryCode": "US"
+    },
+    "Passport": {
+        "Number": "123456",
+        "Expiration": "2020-01-01",
+        "Issuance": "2016-01-01",
+        "IssuingCountryCode": "US"
+    },
+    "Visa": {
+        "Number": "123456",
+        "Expiration": "2020-01-01",
+        "Issuance": "2016-01-01",
+        "IssuingCountryCode": "US"
+    },
+    "DriversLicense": {
+        "Number": "123456",
+        "Expiration": "2020-01-01",
+        "Issuance": "2016-01-01",
+        "IssuingCountryCode": "US"
+    }
 }
 ```
 
