@@ -172,6 +172,7 @@ Raturns all products offered together with the specified services.
 {
     "Products": [
         {
+            "CategoryId": null,
             "Charging": "PerPersonPerTimeUnit",
             "Description": "Nice continental breakfast.",
             "Id": "198bc308-c1f2-4a1c-a827-c41d99d52f3d",

@@ -311,7 +311,6 @@ Returns all accounting items of the enterprise that were consumed \(posted\) or 
 | `CustomerId` | string | required | Unique identifier of the [Customer](customers.md#customer) whose account the item belongs to. |
 | `ProductId` | string | optional | Unique identifier of the [Product](services.md#product). |
 | `ServiceId` | string | optional | Unique identifier of the [Service](services.md#service) the item belongs to. |
-| `CreditCardId` | string | optional | Unique identifier of the Credit card associated with the item. |
 | `OrderId` | string | optional | Unique identifier of the order \(or [Reservation](reservations.md#reservation) which is a special type of order\) the item belongs to. |
 | `BillId` | string | optional | Unique identifier of the bill the item is assigned to. |
 | `InvoiceId` | string | optional | Unique identifier of the invoiced [Bill](finance.md#bill) the item is receivable for. |
@@ -644,12 +643,12 @@ Adds a new credit card payment to a bill of the specified customer. Note that th
 | `CustomerId` | string | required | Unique identifier of the [Customer](customers.md#customer). |
 | `BillId` | string | optional | Unique identifier of an open bill of the customer where to assign the payment. |
 | `Amount` | [Currency value](finance.md#currency-value) | required | Amount of the credit card payment. |
-| `CreditCard` | [Credit card parameters](finance.md#credit-card-parameters) | required | Credit card details. |
+| `CreditCard` | [Credit card](finance.md#credit-card) | required | Credit card details. |
 | `Category` | [Accounting category parameters](services.md#accounting-category-parameters) | optional | Accounting category to be assigned to the payment. |
 | `ReceiptIdentifier` | string | optional | Identifier of the payment receipt. |
 | `Notes` | string | optional | Additional payment notes. |
 
-#### Credit card parameters
+#### Credit card
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
