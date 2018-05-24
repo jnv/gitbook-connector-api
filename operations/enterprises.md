@@ -42,7 +42,7 @@ Returns all company profiles of the enterprise, possible filtered by their ident
             "TaxIdentifier": ""
         },
         {
-            "AdditionalTaxdentifier": "",
+            "AdditionalTaxIdentifier": "",
             "Address": null,
             "ElectronicInvoiceIdentifier": "",
             "Id": "217b9da3-1c2a-45df-af20-54e57a13368c",
