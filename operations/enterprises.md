@@ -27,6 +27,7 @@ Returns all company profiles of the enterprise, possible filtered by their ident
 {
     "Companies": [
         {
+            "AccountingCode": "",
             "AdditionalTaxIdentifier": "",
             "Address": {
                 "City": "Dortmund",
@@ -42,6 +43,7 @@ Returns all company profiles of the enterprise, possible filtered by their ident
             "TaxIdentifier": ""
         },
         {
+            "AccountingCode": "",
             "AdditionalTaxIdentifier": "",
             "Address": null,
             "ElectronicInvoiceIdentifier": "",
