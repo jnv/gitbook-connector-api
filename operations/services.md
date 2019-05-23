@@ -8,6 +8,11 @@ Returns all services offered by the enterprise.
 
 `[PlatformAddress]/api/connector/v1/services/getAll`
 
+- description
+- description
+- description
+- description
+
 ```javascript
 {
 }
