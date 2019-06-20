@@ -1,6 +1,10 @@
 # Changelog
 
-## 21 May 2019 19:00UTC
+## 5th May 2019 19:00UTC
+
+* Added [Update Reservation](operations/reservations.md#update-reservation) operation.
+
+## 21st May 2019 19:00UTC
 
 * Added [Integration event webhook](guidelines.md#Integration-event-webhook) to [Guidelines](guidelines.md).
 
