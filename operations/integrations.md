@@ -311,6 +311,11 @@ Adds a new key cutter command representing cutting of a key for the specified re
 | --- | --- | --- | --- |
 | `CommandId` | string | required | Unique identifier of the created [Command](integrations.md#command). |
 
+## Add payment terminal command
+
+
+
+
 ## Update command
 
 Updates state of a command.
