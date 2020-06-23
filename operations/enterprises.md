@@ -270,13 +270,13 @@ Returns all outlets of an enterprise associated with the connector integration.
 | `IsActive` | boolean | required | Whether the outlet is still active. |
 | `Name` | string | required | Name of the outlet. |
 
-## Get all spaces
+## Get all resources
 
-Returns all spaces of an enterprise associated with the connector integration.
+Returns all resources of an enterprise associated with the connector integration.
 
 ### Request
 
-`[PlatformAddress]/api/connector/v1/spaces/getAll`
+`[PlatformAddress]/api/connector/v1/resources/getAll`
 
 ```javascript
 {
@@ -284,9 +284,12 @@ Returns all spaces of an enterprise associated with the connector integration.
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "Client": "Sample Client 1.0.0",
     "Extent": {
-        "Spaces": true,
-        "SpaceCategories": false,
-        "SpaceFeatures": false,
+        "Resources": true,
+        "ResourceCategories": false,
+        "ResourceCategoryAssignments": false,
+        "ResourceCategoryImageAssignments": false,
+        "ResourceFeatures": false,
+        "ResourceFeatureAssignments": false,
         "Inactive": false
     }
 }
@@ -297,86 +300,104 @@ Returns all spaces of an enterprise associated with the connector integration.
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `Extent` | [Space extent](enterprises.md#space-extent) | required | Extent of data to be returned. |
+| `Extent` | [Resource extent](enterprises.md#resource-extent) | required | Extent of data to be returned. |
 
-#### Space extent
+#### Resource extent
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `Spaces` | bool | optional | Whether the response should contain spaces. |
-| `SpaceCategories` | bool | optional | Whether the response should contain space categories. |
-| `SpaceFeatures` | bool | optional | Whether the response should contain space features and their assignments. |
+| `Resources` | bool | optional | Whether the response should contain resources. |
+| `ResourceCategories` | bool | optional | Whether the response should contain categories. |
+| `ResourceCategoryAssignments` | bool | optional | Whether the response should contain assignments of the resources to categories. |
+| `ResourceCategoryImageAssignments` | bool | optional | Whether the response should contain assignments of the images to categories. |
+| `ResourceFeatures` | bool | optional | Whether the response should contain resource features. |
+| `ResourceFeatureAssignments` | bool | optional | Whether the response should contain assignments of the resources to features. |
 | `Inactive` | bool | optional | Whether the response should contain inactive entities. |
 
 ### Response
 
 ```javascript
 {
-    "Spaces": [
+    "Resources": [
         {
-            "BuildingNumber": null,
-            "CategoryId": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
-            "FloorNumber": "1",
             "Id": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
             "IsActive": true,
-            "Number": "101",
-            "ParentSpaceId": null,
+            "Name": "101",
+            "ParentResourceId": null,
             "State": "Dirty",
-            "Type": "Room"
+            "Descriptions": {},
+            "Data": {
+                "Discriminator": "Space",
+                "Value": {
+                    "FloorNumber": "3"
+                }
+            }
         },
         {
-            "BuildingNumber": null,
-            "CategoryId": "773d5e42-de1e-43a0-9ce6-f940faf2303f",
-            "FloorNumber": "1",
             "Id": "c32386aa-1cd2-414a-a823-489325842fbe",
             "IsActive": true,
-            "Number": "102",
-            "ParentSpaceId": null,
+            "Name": "102",
+            "ParentResourceId": null,
             "State": "Inspected",
-            "Type": "Room"
+            "Descriptions": {
+                "en-US": "Resource description"
+            },
+            "Data": {
+                "Discriminator": "Space",
+                "Value": {
+                    "FloorNumber": "3"
+                }
+            }
         }
     ],
-    "SpaceCategories": [
+    "ResourceCategories": [
         {
             "Id": "aaed6e21-1c1f-4644-9872-e53f96a21bf9",
+            "ServiceId": "24e2ead5-65a8-4ed9-8286-abdb00f08a1f",
             "IsActive": true,
-            "Name": "Best Room",
             "Names": {
                 "en-US": "Best Room"
-            },
-            "ShortName": "BR",
             "ShortNames":{
                 "en-US": "BR"
             },
-            "Description": "",
             "Descriptions": {},
             "Ordering": 0,
-            "UnitCount": 2,
-            "ExtraUnitCount": 0
-            "ImageIds": [],
+            "Capacity": 2,
+            "ExtraCapacity": 0
         }
     ],
-    "SpaceFeatures": [
+    "ResourceCategoryAssignments": [
+        {
+            "ResourceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9"
+        }
+    ],
+
+    "ResourceCategoryImageAssignments": [
+        {
+            "CategoryId": "aaed6e21-1c1f-4644-9872-e53f96a21bf9",
+            "ImageId": "8cd435e0-f024-44a0-84fd-abe300b8ae1c"
+        }
+    ],
+    "ResourceFeatures": [
         {
             "Id": "a693dd8c-21fe-4dae-b450-ea3bd9ab3bb0",
+            "ServiceId": "24e2ead5-65a8-4ed9-8286-abdb00f08a1f",
             "IsActive": true,
             "Classification": "AccessibleBathroom",
-            "Name": "Accessible Bathroom"
             "Names": {
                 "en-US": "Accessible Bathroom"
             },
-            "ShortName": "AccessBath",
             "ShortNames": {
                 "en-US": "AccessBath"
             },
-            "Description": null,
             "Descriptions": {}
         }
     ],
-    "SpaceFeatureAssignments": [
+    "ResourceFeatureAssignments": [
         {
-            "SpaceFeatureId": "a693dd8c-21fe-4dae-b450-ea3bd9ab3bb0",
-            "SpaceId": "18019693-c66f-4be8-a893-c3d89fd291cc"
+            "ResourceFeatureId": "a693dd8c-21fe-4dae-b450-ea3bd9ab3bb0",
+            "ResourceId": "18019693-c66f-4be8-a893-c3d89fd291cc"
         }
     ]
 }
@@ -384,33 +405,33 @@ Returns all spaces of an enterprise associated with the connector integration.
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `Spaces` | array of [Space](enterprises.md#space) | required | The spaces of the enterprise. |
-| `SpaceCategories` | array of [Space category](enterprises.md#space-category) | required | Categories of spaces in the enterprise. |
-| `SpaceFeatures` | array of [Space feature](enterprises.md#space-feature) | optional | Features of spaces in the enterprise. |
-| `SpaceFeatureAssignments` | array of [Space feature assignment](enterprises.md#space-feature-assignment) | optional | Assignments of space features to spaces. |
+| `Resources` | array of [Resource](enterprises.md#resource) | required | The resources of the enterprise. |
+| `ResourceCategories` | array of [Resource category](enterprises.md#resource-category) | required | Categories of resources in the enterprise. |
+| `ResourceCategoryAssignments` | array of [Resource feature assignment](enterprises.md#resource-feature-assignment) | optional | Assignments of resources to categories. |
+| `ResourceCategoryImageAssignments` | array of [Resource feature assignment](enterprises.md#resource-feature-assignment) | optional | Assignments of images to categories. |
+| `ResourceFeatures` | array of [Resource feature](enterprises.md#resource-feature) | optional | Features of resources in the enterprise. |
+| `ResourceFeatureAssignments` | array of [Resource feature assignment](enterprises.md#resource-feature-assignment) | optional | Assignments of resource features to resources. |
 
-#### Space
+#### Resource
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `Id` | string | required | Unique identifier of the space. |
-| `IsActive` | bool | required | Whether the space is still active. |
-| `Type` | string [Space type](enterprises.md#space-type) | required | Type of the space. |
-| `Number` | string | required | Number of the space \(e.g. room number\). |
-| `FloorNumber` | string | optional | Number of the floor the space is on. |
-| `BuildingNumber` | string | optional | Number of the building the space is in. |
-| `ParentSpaceId` | string | optional | Identifier of the parent [Space](enterprises.md#space) \(e.g. room of a bed\). |
-| `CategoryId` | string | required | Identifier of the [Space category](enterprises.md#space-category) assigned to the space. |
-| `State` | string [Space state](enterprises.md#space-state) | required | State of the room. |
+| `Id` | string | required | Unique identifier of the resource. |
+| `IsActive` | bool | required | Whether the resource is still active. |
+| `Type` | string [Resource type](enterprises.md#resource-type) | required | Type of the resource. |
+| `Name` | string | required | Name of the resource \(e.g. room number\). |
+| `ParentResourceId` | string | optional | Identifier of the parent [Resource](enterprises.md#resource) \(e.g. room of a bed\). |
+| `State` | string [Resource state](enterprises.md#resource-state) | required | State of the resource. |
+| `Data` | [Resource data](enterprises.md#resource-data) | required | Additional data of the resource. |
 
-#### Space type
+#### Resource type
 
 * `Room`
 * `Dorm`
 * `Bed`
 * ...
 
-#### Space state
+#### Resource state
 
 * `Dirty`
 * `Clean`
@@ -418,7 +439,23 @@ Returns all spaces of an enterprise associated with the connector integration.
 * `OutOfService`
 * `OutOfOrder`
 
-#### Space category
+#### Resource data
+
+| Property | Type |  | Description |
+| --- | --- | --- | --- |
+| `Discriminator` | string [Resource data discriminator](enterprises.md#resource-data-discriminator) | required | Defines the type of the resource. |
+| `Value` | object | required | Based on the resource data discriminator provides additional data of the resource. Eg. [Space resource data](enterprises.md#space-resource-data)  |
+
+#### Resource data discriminator
+* `Space`
+
+#### Space resource data
+
+| Property | Type |  | Description |
+| --- | --- | --- | --- |
+| `FloorNumber` | string | required | Number of the floor the space is on |
+
+#### Resource category
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
