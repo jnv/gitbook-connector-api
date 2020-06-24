@@ -500,11 +500,24 @@ Updates resource.
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
 | `ResourceId` | string | required | Unique identifier of the [Resource](#resource) which is updated. |
-| `Name` | string | optional | New name of the resource \(e.g. room number\). |
-| `ParentResourceId` | string | optional | Identifier of the new parent [Resource](#resource). |
-| `Data` | [Resource data](#resource-data) | optional | New additional data of the resource. |
-| `State` | string | optional | New state of the resource \(`Dirty`, `Clean`, `Inspected` or `OutOfService`\). |
-| `StateReason` | string | optional | New value of the rate on the interval. If not specified, removes all adjustments within the interval. |
+| `Name` | [String update value](#string-update-value) | optional | New name of the resource \(e.g. room number\). |
+| `ParentResourceId` | [String update value](#string-update-value) | optional | Identifier of the new parent [Resource](#resource). |
+| `Data` | [Resource data update value](#resource-data-update-value) | optional | New additional data of the resource. |
+| `State` | [String update value](#string-update-value) | optional | New state of the resource \(`Dirty`, `Clean`, `Inspected` or `OutOfService`\). |
+| `StateReason` | [String update value](#string-update-value) | optional | New value of the rate on the interval. If not specified, removes all adjustments within the interval. |
+
+#### String update value
+
+| Property | Type |  | Description |
+| --- | --- | --- | --- |
+| `Value` | string | optional | Value which is to be updated. |
+
+#### Resource data update value
+
+| Property | Type |  | Description |
+| --- | --- | --- | --- |
+| `Value` | [Resource data](#resource-data) | optional | Value which is to be updated. |
+
 
 ### Response
 
