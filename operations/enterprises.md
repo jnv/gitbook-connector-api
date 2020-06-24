@@ -36,10 +36,10 @@ Returns all company profiles of the enterprise, possibly filtered by identifiers
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `Ids` | array of string | optional | Unique identifiers of [Companies](enterprises.md#company). |
-| `Names` | array of string | optional | Names of [Companies](enterprises.md#company). |
-| `CreatedUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval of [Company](enterprises.md#company) creation date and time. |
-| `UpdatedUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval of [Company](enterprises.md#company) last update date and time. |
+| `Ids` | array of string | optional | Unique identifiers of [Companies](#company). |
+| `Names` | array of string | optional | Names of [Companies](#company). |
+| `CreatedUtc` | [Time interval](#time-interval) | optional | Interval of [Company](#company) creation date and time. |
+| `UpdatedUtc` | [Time interval](#time-interval) | optional | Interval of [Company](#company) last update date and time. |
 
 #### Time interval
 
@@ -94,7 +94,7 @@ Returns all company profiles of the enterprise, possibly filtered by identifiers
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `Companies` | array of [Company](enterprises.md#company) | required | The company profiles of the enterprise. |
+| `Companies` | array of [Company](#company) | required | The company profiles of the enterprise. |
 
 #### Company
 
@@ -152,14 +152,14 @@ Returns all contracts between the enterprise and other companies.
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `TravelAgencyContracts` | array of [Travel agency contract](enterprises.md#travel-agency-contract) | required | The travel agency contracts. |
+| `TravelAgencyContracts` | array of [Travel agency contract](#travel-agency-contract) | required | The travel agency contracts. |
 
 #### Travel agency contract
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the contract. |
-| `CompanyId` | string | required | Unique identifier of the contracted [Company](enterprises.md#company). |
+| `CompanyId` | string | required | Unique identifier of the contracted [Company](#company). |
 | `IsActive` | boolean | required | Whether the contract is still active. |
 | `CommissionIncluded` | boolean | optional | Whether commission of the travel agency is included in the rate. |
 | `Commission` | number | optional | Commission of the travel agency. |
@@ -207,7 +207,7 @@ Returns all departments of an enterprise associated with the connector integrati
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `Departments` | array of [Department](enterprises.md#department) | required | The departments of the enterprise. |
+| `Departments` | array of [Department](#department) | required | The departments of the enterprise. |
 
 #### Department
 
@@ -260,7 +260,7 @@ Returns all outlets of an enterprise associated with the connector integration.
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `Outlets` | array of [Outlet](enterprises.md#outlet) | required | The outlets of the enterprise. |
+| `Outlets` | array of [Outlet](#outlet) | required | The outlets of the enterprise. |
 
 #### Outlet
 
@@ -300,7 +300,7 @@ Returns all resources of an enterprise associated with the connector integration
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `Extent` | [Resource extent](enterprises.md#resource-extent) | required | Extent of data to be returned. |
+| `Extent` | [Resource extent](#resource-extent) | required | Extent of data to be returned. |
 
 #### Resource extent
 
@@ -396,8 +396,8 @@ Returns all resources of an enterprise associated with the connector integration
     ],
     "ResourceFeatureAssignments": [
         {
-            "ResourceFeatureId": "a693dd8c-21fe-4dae-b450-ea3bd9ab3bb0",
-            "ResourceId": "18019693-c66f-4be8-a893-c3d89fd291cc"
+            "ResourceId": "18019693-c66f-4be8-a893-c3d89fd291cc",
+            "FeatureId": "a693dd8c-21fe-4dae-b450-ea3bd9ab3bb0"
         }
     ]
 }
@@ -405,12 +405,12 @@ Returns all resources of an enterprise associated with the connector integration
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `Resources` | array of [Resource](enterprises.md#resource) | required | The resources of the enterprise. |
-| `ResourceCategories` | array of [Resource category](enterprises.md#resource-category) | required | Categories of resources in the enterprise. |
-| `ResourceCategoryAssignments` | array of [Resource feature assignment](enterprises.md#resource-feature-assignment) | optional | Assignments of resources to categories. |
-| `ResourceCategoryImageAssignments` | array of [Resource feature assignment](enterprises.md#resource-feature-assignment) | optional | Assignments of images to categories. |
-| `ResourceFeatures` | array of [Resource feature](enterprises.md#resource-feature) | optional | Features of resources in the enterprise. |
-| `ResourceFeatureAssignments` | array of [Resource feature assignment](enterprises.md#resource-feature-assignment) | optional | Assignments of resource features to resources. |
+| `Resources` | array of [Resource](#resource) | required | The resources of the enterprise. |
+| `ResourceCategories` | array of [Resource category](#resource-category) | required | Categories of resources in the enterprise. |
+| `ResourceCategoryAssignments` | array of [Resource feature assignment](#resource-category-assignment) | optional | Assignments of resources to categories. |
+| `ResourceCategoryImageAssignments` | array of [Resource category assignment](#resource-category-image-assignment) | optional | Assignments of images to categories. |
+| `ResourceFeatures` | array of [Resource feature](#resource-feature) | optional | Features of resources in the enterprise. |
+| `ResourceFeatureAssignments` | array of [Resource feature assignment](#resource-feature-assignment) | optional | Assignments of resource features to resources. |
 
 #### Resource
 
@@ -418,18 +418,10 @@ Returns all resources of an enterprise associated with the connector integration
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the resource. |
 | `IsActive` | bool | required | Whether the resource is still active. |
-| `Type` | string [Resource type](enterprises.md#resource-type) | required | Type of the resource. |
 | `Name` | string | required | Name of the resource \(e.g. room number\). |
-| `ParentResourceId` | string | optional | Identifier of the parent [Resource](enterprises.md#resource) \(e.g. room of a bed\). |
-| `State` | string [Resource state](enterprises.md#resource-state) | required | State of the resource. |
-| `Data` | [Resource data](enterprises.md#resource-data) | required | Additional data of the resource. |
-
-#### Resource type
-
-* `Room`
-* `Dorm`
-* `Bed`
-* ...
+| `ParentResourceId` | string | optional | Identifier of the parent [Resource](#resource) \(e.g. room of a bed\). |
+| `State` | string [Resource state](#resource-state) | required | State of the resource. |
+| `Data` | [Resource data](#resource-data) | required | Additional data of the resource. |
 
 #### Resource state
 
@@ -443,8 +435,8 @@ Returns all resources of an enterprise associated with the connector integration
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `Discriminator` | string [Resource data discriminator](enterprises.md#resource-data-discriminator) | required | Defines the type of the resource. |
-| `Value` | object | required | Based on the resource data discriminator provides additional data of the resource. Eg. [Space resource data](enterprises.md#space-resource-data)  |
+| `Discriminator` | string [Resource data discriminator](#resource-data-discriminator) | required | Defines the type of the resource. |
+| `Value` | object | required | Based on the resource data discriminator provides additional data of the resource. Eg. [Space resource data](#space-resource-data)  |
 
 #### Resource data discriminator
 * `Space`
@@ -501,16 +493,16 @@ Updates resource.
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
 | `ResourceUpdates` | array of [Resource update](#resource-update) | required | Resource updates. |
-| `State` | string [Resource state](enterprises.md#resource-state) | required | New state of the resource \(`Dirty`, `Clean`, `Inspected` or `OutOfService`\). |
+| `State` | string [Resource state](#resource-state) | required | New state of the resource \(`Dirty`, `Clean`, `Inspected` or `OutOfService`\). |
 
 #### Resource update
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `ResourceId` | string | required | Unique identifier of the [Resource](enterprises.md#resource) which is updated. |
+| `ResourceId` | string | required | Unique identifier of the [Resource](#resource) which is updated. |
 | `Name` | string | optional | New name of the resource \(e.g. room number\). |
-| `ParentResourceId` | string | optional | Identifier of the new parent [Resource](enterprises.md#resource). |
-| `Data` | [Resource data](enterprises.md#resource-data) | optional | Additional data of the resource. |
+| `ParentResourceId` | string | optional | Identifier of the new parent [Resource](#resource). |
+| `Data` | [Resource data](#resource-data) | optional | New additional data of the resource. |
 | `State` | string | optional | New state of the resource \(`Dirty`, `Clean`, `Inspected` or `OutOfService`\). |
 | `StateReason` | string | optional | New value of the rate on the interval. If not specified, removes all adjustments within the interval. |
 
@@ -525,20 +517,36 @@ Updates resource.
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the category. |
-| `IsActive` | bool | required | Whether the resource category is still active. |
-| `Names` | [Localized text](enterprises.md#localized-text) | required | All translations of the name. |
-| `ShortNames` | [Localized text](enterprises.md#localized-text) | required | All translations of the short name. |
-| `Descriptions` | [Localized text](enterprises.md#localized-text) | required | All translations of the description. |
+| `IsActive` | bool | required | Whether the category is still active. |
+| `Type` | string [Resource category type](#resource-category-type) | required | Type of the category. |
+| `Names` | [Localized text](#localized-text) | required | All translations of the name. |
+| `ShortNames` | [Localized text](#localized-text) | required | All translations of the short name. |
+| `Descriptions` | [Localized text](#localized-text) | required | All translations of the description. |
 | `Ordering` | number | required | Ordering of the category, lower number corresponds to lower category \(note that uniqueness nor continuous sequence is guaranteed\). |
 | `Capacity` | number | required | Capacity that can be accommodated \(e.g. bed count\). |
 | `ExtraCapacity` | number | required | Extra capacity that can be accommodated \(e.g. extra bed count\). |
 
-#### Resource category assignments
+#### Resource category type
+
+* `Room`
+* `Dorm`
+* `Bed`
+* ...
+
+#### Resource category assignment
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
 | `ResourceId` | string | required | Unique identifier of the resource. |
 | `CategoryId` | string | required | Unique identifier of the category that resource is assigned to. |
+
+#### Resource category image assignment
+
+| Property | Type |  | Description |
+| --- | --- | --- | --- |
+| `CategoryId` | string | required | Unique identifier of the category that image is assigned to. |
+| `ImageId` | string | required | Unique identifier of the image. |
+
 
 #### Localized text
 
@@ -551,10 +559,10 @@ An object where keys are the [Language](configuration.md#language) codes and val
 | `Id` | string | required | Unique identifier of the feature. |
 | `ServiceId` | string | required | Unique identifier of the [Service](services.md#service). |
 | `IsActive` | bool | required | Whether the resource feature is still active. |
-| `Classification` | [Resource feature classification](enterprises.md#resource-feature-classification) | required | Classification of the feature. |
-| `Names` | [Localized text](enterprises.md#localized-text) | required | All translations of the name. |
-| `ShortNames` | [Localized text](enterprises.md#localized-text) | required | All translations of the short name. |
-| `Descriptions` | [Localized text](enterprises.md#localized-text) | required | All translations of the description. |
+| `Classification` | [Resource feature classification](#resource-feature-classification) | required | Classification of the feature. |
+| `Names` | [Localized text](#localized-text) | required | All translations of the name. |
+| `ShortNames` | [Localized text](#localized-text) | required | All translations of the short name. |
+| `Descriptions` | [Localized text](#localized-text) | required | All translations of the description. |
 
 #### Resource feature classification
 
@@ -584,12 +592,12 @@ An object where keys are the [Language](configuration.md#language) codes and val
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `ResourceId` | string | required | Unique identifier [Resource](enterprises.md#resource). |
-| `FeatureId` | string | required | Unique identifier [Resource feature](enterprises.md#resource-feature). |
+| `ResourceId` | string | required | Unique identifier of the [Resource](#resource). |
+| `FeatureId` | string | required | Unique identifier of the [Resource feature](#resource-feature). |
 
 ## Get all resource blocks
 
-Returns all resource blocks \(out of order blocks or internal use blocks\).
+Returns all resource blocks \(out of order blocks or internally used blocks\).
 
 ### Request
 
@@ -600,6 +608,12 @@ Returns all resource blocks \(out of order blocks or internal use blocks\).
     "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "Client": "Sample Client 1.0.0",
+    "ResourceBlockIds": [
+        "c478f1b3-7edb-4ccc-8f07-dd32fae1ca70"
+    ],
+    "AssignedResourceIds": [
+        "b64f088d-49b5-4d5f-9766-2e27c4b75e27"
+    ],
     "CollidingUtc": {
         "StartUtc": "2020-01-25T00:00:00Z",
         "EndUtc": "2020-01-30T00:00:00Z"
@@ -623,9 +637,11 @@ Returns all resource blocks \(out of order blocks or internal use blocks\).
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `CollidingUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval in which the [Resource block](#resource-block) is active. |
-| `CreatedUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval in which the [Resource block](#resource-block) was created. |
-| `UpdatedUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval in which the [Resource block](#resource-block) was updated. |
+| `ResourceBlockIds` | array of string | optional | Unique identifiers of the requested [Resource block](#resource-block)s. |
+| `AssignedResourceIds` | array of string | optional | Unique identifiers of the requested Assigned [Resource](#resource)s. |
+| `CollidingUtc` | [Time interval](#time-interval) | optional | Interval in which the [Resource block](#resource-block) is active. |
+| `CreatedUtc` | [Time interval](#time-interval) | optional | Interval in which the [Resource block](#resource-block) was created. |
+| `UpdatedUtc` | [Time interval](#time-interval) | optional | Interval in which the [Resource block](#resource-block) was updated. |
 | `Extent` | [Resource block extent](#resource-block-extent) | required | Extent of data to be returned. |
 
 #### Resource block extent
@@ -665,16 +681,16 @@ Returns all resource blocks \(out of order blocks or internal use blocks\).
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `ResourceBlocks` | array of [Resource block](enterprises.md#resource-block) | required | The resource blocks colliding with the interval. |
+| `ResourceBlocks` | array of [Resource block](#resource-block) | required | The resource blocks colliding with the interval or matching the Id parameters. |
 
 #### Resource block
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the block. |
-| `AssignedResourceId` | string | required | Unique identifier of the assigned [Resource](enterprises.md#resource). |
+| `AssignedResourceId` | string | required | Unique identifier of the assigned [Resource](#resource). |
 | `IsActive` | bool | required | Whether the block is still active. |
-| `Type` | string [Resource block type](enterprises.md#resource-block-type) | required | Type of the resource block. |
+| `Type` | string [Resource block type](#resource-block-type) | required | Type of the resource block. |
 | `StartUtc` | string | required | Start of the block in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the block in UTC timezone in ISO 8601 format. |
 | `CreatedUtc` | string | required | Creation date and time of the block in UTC timezone in ISO 8601 format. |
@@ -772,7 +788,7 @@ Removes specified resource blocks from the resources.
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `ResourceBlockIds` | array of string | required | Unique identifier of [Resource block](enterprises.md#resource-block)s to be removed. |
+| `ResourceBlockIds` | array of string | required | Unique identifier of [Resource block](#resource-block)s to be removed. |
 
 ### Response
 
@@ -810,7 +826,7 @@ Adds a new task to the enterprise, optionally to a specified department.
 | `Description` | string | optional | Further decription of the task. |
 | `DeadlineUtc` | string | required | Deadline of the task in UTC timezone in ISO 8601 format. |
 | `ServiceOrderId` | string | optional | Unique identifier of the order (for example a [Reservation](reservations.md#reservation) or [Product order](services.md#add-order)) the task is linked with. |
-| `DepartmentId` | string | optional | Unique identifier of the [Department](enterprises.md#department) the task is addressed to. |
+| `DepartmentId` | string | optional | Unique identifier of the [Department](#department) the task is addressed to. |
 
 ### Response
 
@@ -967,7 +983,7 @@ Adds a new company to the enterprise.
 
 ### Response
 
-Same structure as in [Get all companies](enterprises.md#get-all-companies) operation.
+Same structure as in [Get all companies](#get-all-companies) operation.
 
 ## Update company
 
@@ -1032,4 +1048,4 @@ Updates information of the company.
 
 ### Response
 
-Same structure as in [Get all companies](enterprises.md#get-all-companies) operation.
+Same structure as in [Get all companies](#get-all-companies) operation.
