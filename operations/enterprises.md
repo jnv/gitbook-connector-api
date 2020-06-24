@@ -455,6 +455,71 @@ Returns all resources of an enterprise associated with the connector integration
 | --- | --- | --- | --- |
 | `FloorNumber` | string | required | Number of the floor the space is on |
 
+## Update resource
+
+Updates resource.
+
+### Request
+
+`[PlatformAddress]/api/connector/v1/resources/update`
+
+```javascript
+{
+    "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
+    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
+    "Client": "Sample Client 1.0.0",
+    "ResourceUpdates": [
+        {
+            "ResourceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+            "Name": {
+                "Value": "0101"
+            },
+            "ParentResourceId": null,
+            "Data": 
+            {
+                "Value": {
+                    "Discriminator": "Space",
+                    "Value": {
+                        "FloorNumber": "1"
+                    }
+                }
+            },
+            "State": {
+                "Value": "Clean"
+            },
+            "StateReason": {
+                "Value": "Sample reason"
+            }
+        }
+    ]
+}
+```
+
+| Property | Type |  | Description |
+| --- | --- | --- | --- |
+| `ClientToken` | string | required | Token identifying the client application. |
+| `AccessToken` | string | required | Access token of the client application. |
+| `Client` | string | required | Name and version of the client application. |
+| `ResourceUpdates` | array of [Resource update](#resource-update) | required | Resource updates. |
+| `State` | string [Resource state](enterprises.md#resource-state) | required | New state of the resource \(`Dirty`, `Clean`, `Inspected` or `OutOfService`\). |
+
+#### Resource update
+
+| Property | Type |  | Description |
+| --- | --- | --- | --- |
+| `ResourceId` | string | required | Unique identifier of the [Resource](enterprises.md#resource) which is updated. |
+| `Name` | string | optional | New name of the resource \(e.g. room number\). |
+| `ParentResourceId` | string | optional | Identifier of the new parent [Resource](enterprises.md#resource). |
+| `Data` | [Resource data](enterprises.md#resource-data) | optional | Additional data of the resource. |
+| `State` | string | optional | New state of the resource \(`Dirty`, `Clean`, `Inspected` or `OutOfService`\). |
+| `StateReason` | string | optional | New value of the rate on the interval. If not specified, removes all adjustments within the interval. |
+
+### Response
+
+```javascript
+{}
+```
+
 #### Resource category
 
 | Property | Type |  | Description |
@@ -485,7 +550,7 @@ An object where keys are the [Language](configuration.md#language) codes and val
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the feature. |
 | `ServiceId` | string | required | Unique identifier of the [Service](services.md#service). |
-| `IsActive` | bool | required | Whether the space feature is still active. |
+| `IsActive` | bool | required | Whether the resource feature is still active. |
 | `Classification` | [Resource feature classification](enterprises.md#resource-feature-classification) | required | Classification of the feature. |
 | `Names` | [Localized text](enterprises.md#localized-text) | required | All translations of the name. |
 | `ShortNames` | [Localized text](enterprises.md#localized-text) | required | All translations of the short name. |
@@ -600,7 +665,7 @@ Returns all resource blocks \(out of order blocks or internal use blocks\).
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `ResourceBlocks` | array of [Resource block](enterprises.md#resource-block) | required | The space blocks colliding with the interval. |
+| `ResourceBlocks` | array of [Resource block](enterprises.md#resource-block) | required | The resource blocks colliding with the interval. |
 
 #### Resource block
 
@@ -609,13 +674,13 @@ Returns all resource blocks \(out of order blocks or internal use blocks\).
 | `Id` | string | required | Unique identifier of the block. |
 | `AssignedResourceId` | string | required | Unique identifier of the assigned [Resource](enterprises.md#resource). |
 | `IsActive` | bool | required | Whether the block is still active. |
-| `Type` | string [Space block type](enterprises.md#space-block-type) | required | Type of the space block. |
+| `Type` | string [Resource block type](enterprises.md#resource-block-type) | required | Type of the resource block. |
 | `StartUtc` | string | required | Start of the block in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the block in UTC timezone in ISO 8601 format. |
 | `CreatedUtc` | string | required | Creation date and time of the block in UTC timezone in ISO 8601 format. |
 | `UpdatedUtc` | string | required | Last update date and time of the block in UTC timezone in ISO 8601 format. |
 
-#### Space block type
+#### Resource block type
 
 * `OutOfOrder`
 * `InternalUse`
@@ -680,22 +745,22 @@ Adds a new resource block to the specified resource for a defined period of time
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `ResourceBlocks` | array of [Resource block](#resource-block) | required | Resource blocks added. |
+| `ResourceBlocks` | array of [Resource block](#resource-block)s | required | Resource blocks added. |
 
-## Delete space blocks
+## Delete resource blocks
 
-Removes specified space blocks from the spaces.
+Removes specified resource blocks from the resources.
 
 ### Request
 
-`[PlatformAddress]/api/connector/v1/spaceBlocks/delete`
+`[PlatformAddress]/api/connector/v1/resourceBlocks/delete`
 
 ```javascript
 {
     "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "Client": "Sample Client 1.0.0",
-    "SpaceBlockIds": [
+    "ResourceBlockIds": [
         "bf1e10b7-8a03-4675-9e27-05fc84312a58",
         "e8fb6bfb-d64a-4e7c-acfe-ab0400d01183"
     ]
@@ -707,39 +772,7 @@ Removes specified space blocks from the spaces.
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `SpaceBlockIds` | array of string | required | Unique identifier of [Space block](enterprises.md#space-block)s to be removed. |
-
-### Response
-
-```javascript
-{}
-```
-
-## Update space state
-
-Updates state of the specified space. Note that the state is also updated on the child spaces of the specified space. So if e.g. dorm space is set to `Dirty`, ale subspaces \(beds\) are also set to `Dirty`.
-
-### Request
-
-`[PlatformAddress]/api/connector/v1/spaces/updateState`
-
-```javascript
-{
-    "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
-    "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
-    "Client": "Sample Client 1.0.0",
-    "SpaceId": "41b3e3a2-3400-4d72-86d4-1e341ccf8977",
-    "State": "Inspected"
-}
-```
-
-| Property | Type |  | Description |
-| --- | --- | --- | --- |
-| `ClientToken` | string | required | Token identifying the client application. |
-| `AccessToken` | string | required | Access token of the client application. |
-| `Client` | string | required | Name and version of the client application. |
-| `SpaceId` | string | required | Unique identifier of the [Space](enterprises.md#space) to be updated. |
-| `State` | string [Space state](enterprises.md#space-state) | required | New state of the space \(`Dirty`, `Clean`, `Inspected` or `OutOfService`\). |
+| `ResourceBlockIds` | array of string | required | Unique identifier of [Resource block](enterprises.md#resource-block)s to be removed. |
 
 ### Response
 
