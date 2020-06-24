@@ -460,37 +460,38 @@ Returns all resources of an enterprise associated with the connector integration
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the category. |
-| `IsActive` | bool | required | Whether the space category is still active. |
-| `Name` | string | required | Name of the category. |
+| `IsActive` | bool | required | Whether the resource category is still active. |
 | `Names` | [Localized text](enterprises.md#localized-text) | required | All translations of the name. |
-| `ShortName` | string | optional | Short name \(e.g. code\) of the category. |
 | `ShortNames` | [Localized text](enterprises.md#localized-text) | required | All translations of the short name. |
-| `Description` | string | optional | Description of the category. |
 | `Descriptions` | [Localized text](enterprises.md#localized-text) | required | All translations of the description. |
 | `Ordering` | number | required | Ordering of the category, lower number corresponds to lower category \(note that uniqueness nor continuous sequence is guaranteed\). |
-| `UnitCount` | number | required | Count of units that can be accommodated \(e.g. bed count\). |
-| `ExtraUnitCount` | number | required | Count of extra units that can be accommodated \(e.g. extra bed count\). |
-| `ImageIds` | array of string | required | Unique identifiers of the space category images. |
+| `Capacity` | number | required | Capacity that can be accommodated \(e.g. bed count\). |
+| `ExtraCapacity` | number | required | Extra capacity that can be accommodated \(e.g. extra bed count\). |
+
+#### Resource category assignments
+
+| Property | Type |  | Description |
+| --- | --- | --- | --- |
+| `ResourceId` | string | required | Unique identifier of the resource. |
+| `CategoryId` | string | required | Unique identifier of the category that resource is assigned to. |
 
 #### Localized text
 
 An object where keys are the [Language](configuration.md#language) codes and values texts in respective languages.
 
-#### Space feature
+#### Resource feature
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the feature. |
+| `ServiceId` | string | required | Unique identifier of the [Service](services.md#service). |
 | `IsActive` | bool | required | Whether the space feature is still active. |
-| `Classification` | [Space feature classification](enterprises.md#space-feature-classification) | required | Classification of the feature. |
-| `Name` | string | required | Name of the feature. |
+| `Classification` | [Resource feature classification](enterprises.md#resource-feature-classification) | required | Classification of the feature. |
 | `Names` | [Localized text](enterprises.md#localized-text) | required | All translations of the name. |
-| `ShortName` | string | optional | Short name \(e.g. code\) of the feature. |
 | `ShortNames` | [Localized text](enterprises.md#localized-text) | required | All translations of the short name. |
-| `Description` | string | optional | Description of the feature. |
 | `Descriptions` | [Localized text](enterprises.md#localized-text) | required | All translations of the description. |
 
-#### Space feature classification
+#### Resource feature classification
 
 * `AccessibleBathroom`
 * `AccessibleRoom`
@@ -514,20 +515,20 @@ An object where keys are the [Language](configuration.md#language) codes and val
 * `SeaView`
 * `...`
 
-#### Space feature assignment
+#### Resource feature assignment
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `SpaceId` | string | required | Unique identifier [Space](enterprises.md#space). |
-| `SpaceFeatureId` | string | required | Unique identifier [Space feature](enterprises.md#space-feature). |
+| `ResourceId` | string | required | Unique identifier [Resource](enterprises.md#resource). |
+| `FeatureId` | string | required | Unique identifier [Resource feature](enterprises.md#resource-feature). |
 
-## Get all space blocks
+## Get all resource blocks
 
-Returns all space blocks \(out of order blocks or house use blocks\).
+Returns all resource blocks \(out of order blocks or internal use blocks\).
 
 ### Request
 
-`[PlatformAddress]/api/connector/v1/spaceBlocks/getAll`
+`[PlatformAddress]/api/connector/v1/resourceBlocks/getAll`
 
 ```javascript
 {
@@ -557,12 +558,12 @@ Returns all space blocks \(out of order blocks or house use blocks\).
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `CollidingUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval in which the [Space block](#space-block) is active. |
-| `CreatedUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval in which the [Space block](#space-block) was created. |
-| `UpdatedUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval in which the [Space block](#space-block) was updated. |
-| `Extent` | [Space block extent](#space-block-extent) | required | Extent of data to be returned. |
+| `CollidingUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval in which the [Resource block](#resource-block) is active. |
+| `CreatedUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval in which the [Resource block](#resource-block) was created. |
+| `UpdatedUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval in which the [Resource block](#resource-block) was updated. |
+| `Extent` | [Resource block extent](#resource-block-extent) | required | Extent of data to be returned. |
 
-#### Space block extent
+#### Resource block extent
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
@@ -572,19 +573,19 @@ Returns all space blocks \(out of order blocks or house use blocks\).
 
 ```javascript
 {
-    "SpaceBlocks": [
+    "ResourceBlocks": [
         {
-            "AssignedSpaceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
+            "AssignedResourceId": "5ee074b1-6c86-48e8-915f-c7aa4702086f",
             "CreatedUtc": "2016-03-29T22:02:34Z",
             "EndUtc": "2016-01-01T16:00:00Z",
             "Id": "5ab9d519-2485-4d77-85c4-2a619cbdc4e7",
             "IsActive": true,
             "StartUtc": "2016-01-01T10:00:00Z",
-            "Type": "HouseUse",
+            "Type": "InternalUse",
             "UpdatedUtc": "2016-03-29T22:02:34Z"
         },
         {
-            "AssignedSpaceId": "f7c4b4f5-ac83-4977-a41a-63d27cc6e3e9",
+            "AssignedResourceId": "f7c4b4f5-ac83-4977-a41a-63d27cc6e3e9",
             "CreatedUtc": "2016-03-29T15:14:06Z",
             "EndUtc": "2016-01-01T16:00:00Z",
             "Id": "4d98ad40-a726-409e-8bf3-2c12ff3c0331",
@@ -599,14 +600,14 @@ Returns all space blocks \(out of order blocks or house use blocks\).
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `SpaceBlocks` | array of [Space block](enterprises.md#space-block) | required | The space blocks colliding with the interval. |
+| `ResourceBlocks` | array of [Resource block](enterprises.md#resource-block) | required | The space blocks colliding with the interval. |
 
-#### Space block
+#### Resource block
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
 | `Id` | string | required | Unique identifier of the block. |
-| `AssignedSpaceId` | string | required | Unique identifier of the assigned [Space](enterprises.md#space). |
+| `AssignedResourceId` | string | required | Unique identifier of the assigned [Resource](enterprises.md#resource). |
 | `IsActive` | bool | required | Whether the block is still active. |
 | `Type` | string [Space block type](enterprises.md#space-block-type) | required | Type of the space block. |
 | `StartUtc` | string | required | Start of the block in UTC timezone in ISO 8601 format. |
@@ -617,27 +618,32 @@ Returns all space blocks \(out of order blocks or house use blocks\).
 #### Space block type
 
 * `OutOfOrder`
-* `HouseUse`
+* `InternalUse`
 
-## Add space block
+## Add resource block
 
-Adds a new space block to the specified space for a defined period of time.
+Adds a new resource block to the specified resource for a defined period of time.
 
 ### Request
 
-`[PlatformAddress]/api/connector/v1/spaceBlocks/add`
+`[PlatformAddress]/api/connector/v1/resourceBlocks/add`
 
 ```javascript
 {
     "ClientToken": "E0D439EE522F44368DC78E1BFB03710C-D24FB11DBE31D4621C4817E028D9E1D",
     "AccessToken": "C66EF7B239D24632943D115EDE9CB810-EA00F8FD8294692C940F6B5A8F9453D",
     "Client": "Sample Client 1.0.0",
-    "SpaceId": "0d71d44e-3d85-4506-9b6f-aab500b69c52",
-    "Name": "Space block 1",
-    "StartUtc": "2019-10-15T10:00:00Z",
-    "EndUtc": "2019-10-20T10:00:00Z",
-    "Type": "OutOfOrder",
-    "Notes": "Note"
+    "ResourceBlocks": [
+        {
+            "ResourceId": "0d71d44e-3d85-4506-9b6f-aab500b69c52",
+            "Name": "Resource block 1",
+            "StartUtc": "2019-10-15T10:00:00Z",
+            "EndUtc": "2019-10-20T10:00:00Z",
+            "Type": "OutOfOrder",
+            "Notes": "Note"
+        }
+    ]
+    
 }
 ```
 
@@ -646,24 +652,35 @@ Adds a new space block to the specified space for a defined period of time.
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `SpaceId` | string | required | Unique identifier of [Space](#space). |
-| `Name` | string | required | Name of the space block. |
+| `ResourceId` | string | required | Unique identifier of [Resource](#resource). |
+| `Name` | string | required | Name of the resource block. |
 | `StartUtc` | string | required | Start of the interval in UTC timezone in ISO 8601 format. |
 | `EndUtc` | string | required | End of the interval in UTC timezone in ISO 8601 format. |
-| `Type` | string [Space block type](#space-block-type) | required | Type of the space block. |
-| `Notes` | string | optional | Note describing the space block. |
+| `Type` | string [Resource block type](#resource-block-type) | required | Type of the resource block. |
+| `Notes` | string | optional | Note describing the resource block. |
 
 ### Response
 
 ```javascript
 {
-    "SpaceBlockId": "bf1e10b7-8a03-4675-9e27-05fc84312a58"
+    "ResourceBlocks": [
+        {
+            "Id": "0913bd1d-69fc-4bcb-82d3-5a40520c8fb0",
+            "Name": "Resource block 1",
+            "StartUtc": "2019-10-15T10:00:00Z",
+            "EndUtc": "2019-10-20T10:00:00Z",
+            "Type": "OutOfOrder",
+            "Notes": "Note",
+            "CreatedUtc": "2016-06-01T15:14:06Z",
+            "UpdatedUtc": "2016-06-01T15:14:06Z"
+        }
+    ]
 }
 ```
 
 | Property | Type |  | Description |
 | --- | --- | --- | --- |
-| `SpaceBlockId` | string | required | Unique identifier of added [Space block](enterprises.md#space-block). |
+| `ResourceBlocks` | array of [Resource block](#resource-block) | required | Resource blocks added. |
 
 ## Delete space blocks
 
