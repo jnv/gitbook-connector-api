@@ -290,7 +290,7 @@ Returns all business segments of the default service provided by the enterprise.
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `ServiceIds` | array of string | required | Unique identifiers of the [Service](services.md#service)s from which the business segments are requested. |
+| `ServiceIds` | array of string | required | Unique identifiers of the [Service](#service)s from which the business segments are requested. |
 
 ### Response
 
@@ -354,7 +354,7 @@ Returns all rates \(pricing setups\) and rate groups \(condition settings\) of t
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `ServiceIds` | array of string | required | Unique identifiers of the [Service](services.md#service)s from which the rates are requested. |
+| `ServiceIds` | array of string | required | Unique identifiers of the [Service](#service)s from which the rates are requested. |
 | `Extent` | [Rate extent](#rate-extent) | required | Extent of data to be returned. |
 
 #### Rate extent
@@ -608,7 +608,7 @@ Returns all restrictions of the default service provided by the enterprise.
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `ServiceIds` | array of string | required | Unique identifiers of the [Service](services.md#service)s from which the restrictions are requested. |
+| `ServiceIds` | array of string | required | Unique identifiers of the [Service](#service)s from which the restrictions are requested. |
 | `ResourceCategoryIds` | array of string | optional | Unique identifiers of [Resource categories](enterprises.md#resource-category). |
 | `RateIds` | array of string | optional | Unique identifiers of [Rate](#rate)s. |
 | `CollidingUtc` | [Time interval](enterprises.md#time-interval) | optional | Interval in which the [Restriction](#restriction) is active. Required if no other filter is provided. |
@@ -800,7 +800,7 @@ Adds new restrictions with the specified conditions.
 | `ClientToken` | string | required | Token identifying the client application. |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
-| `ServiceId` | string | required | Unique identifier of the [Service](services.md#service) restrictions will be added in. |
+| `ServiceId` | string | required | Unique identifier of the [Service](#service) restrictions will be added in. |
 | `Restrictions` | array of [Restriction parameters](#restriction-parameters) | required | Parameters of restrictions. |
 
 #### Restriction parameters
