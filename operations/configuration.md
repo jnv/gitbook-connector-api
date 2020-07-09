@@ -390,7 +390,6 @@ Returns all tax environments supported by the API.
 | --- | --- | --- | --- |
 | `Code` | string | required | Code of the tax rate. |
 | `TaxationCode` | string | required | Code of the taxation. |
-| `Value` | number | required | Tax rate, e.g. `0.21` in case of 21% tax rate. |
 | `Strategy` | object [Tax rate strategy](#tax-rate-strategy) | required | Tax strategy type, e.g. relative or flat. |
 
 #### Tax rate strategy
