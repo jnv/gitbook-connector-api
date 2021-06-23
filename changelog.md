@@ -145,7 +145,7 @@ Changed [Websocket authentication](websockets.md#authentication) from being pass
 
 ## 23rd July 2020 11:30 UTC
 
-* Extended [Product order parameters](operations/services.md#product-order-parameters) with consumption dates.
+* Extended [Product order parameters](operations/services.md#product-order-parameters) with consumption dates. example
 
 ## 21st July 2020 11:30 UTC
 
