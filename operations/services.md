@@ -168,6 +168,9 @@ Returns all availability blocks filtered by services, unique identifiers and oth
     "ExternalIdentifiers": [
         "Block-0001"
     ],
+    "States": [
+        "Optional", "Confirmed"
+    ],
     "Extent": {
         "AvailabilityBlocks": true,
         "Adjustments": true,
@@ -186,7 +189,8 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 | `CreatedUtc` | [Time interval](enterprises.md#time-interval) | optional, max length 3 months | Interval in which the [Availability block](#availability-block)s were created. |
 | `UpdatedUtc` | [Time interval](enterprises.md#time-interval) | optional, max length 3 months | Interval in which the [Availability block](#availability-block)s were updated. |
 | `CollidingUtc` | [Time interval](enterprises.md#time-interval) | optional, max length 3 months | Interval in which the [Availability block](#availability-block)s are active. |
-| `ExternalIdentifiers` | string | optional, max 1000 items | Identifiers of [Availability block](#availability-block)s from external systems |
+| `ExternalIdentifiers` | string | optional, max 1000 items | Identifiers of [Availability block](#availability-block)s from external systems. |
+| `States` | array of string [Availability block state](#availability-block-state) | optional | States the availability block should be in. If not specified, availability blocks in `Confirmed` state are returned. |
 | `Extent` | [Availability block extent](#availability-block-extent) | required | Extent of data to be returned. E.g. it is possible to specify that related service orders (for example [Reservation](reservations.md#reservation)s) are returned. |
 
 #### Availability block extent
@@ -196,6 +200,11 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 | `AvailabilityBlocks` | bool | optional | Whether the response should contain the general availability blocks. |
 | `Adjustments` | bool | optional | Whether the response should contain individual availability adjustments related to availability blocks. |
 | `ServiceOrders` | bool | optional | Whether the response should contain reservations related to availability blocks. |
+
+#### Availability block state
+
+* `Optional` - Confirmed by enterprise but not by the guest \(the enterprise is holding resource for the guest\).
+* `Confirmed` - Confirmed by both parties, before check-in.
 
 ### Response
 
