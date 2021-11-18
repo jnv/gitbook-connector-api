@@ -174,6 +174,8 @@ Returns all availability blocks filtered by services, unique identifiers and oth
         "ServiceOrders": false
     }
 }
+
+
 ```
 
 | Property | Type | Contract | Description |
