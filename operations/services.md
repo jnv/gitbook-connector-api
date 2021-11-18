@@ -176,6 +176,10 @@ Returns all availability blocks filtered by services, unique identifiers and oth
 }
 
 
+
+
+
+
 ```
 
 | Property | Type | Contract | Description |
