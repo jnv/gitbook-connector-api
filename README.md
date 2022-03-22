@@ -19,7 +19,7 @@ For guidance on using the API for different scenarios, have a look at the [Use c
 
 > ### Changes to this API
 > * For the history of changes to the API, see the [Changelog](changelog/)
-> * For important information on deprecations, see [Deprecations](deprecations/)
+> * For important information on deprecations, see [Deprecations](deprecations/)   
 > * To track changes and updates, you can follow the [GitHub repository](https://github.com/MewsSystems/gitbook-connector-api/tree/master)
 
 > ### OpenAPI definition
