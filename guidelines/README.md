@@ -3,7 +3,7 @@
 This section describes guidelines for general usage of the __Mews Connector API__ and serves as a quick-start guide to kickstart your integration development.
 
 > ### Terminology
-> Some of the terms used in the API, such as *enterprise*, *customer* or *resource* may not be familiar.
+> Some of the terms used i n the API, such as *enterprise*, *customer* or *resource* may not be familiar.
 > For example, we use *resource* to describe guest rooms and other types of bookable space.
 > For a full description of all the terms used, see the [Mews Glossary for Open API users](https://help.mews.com/s/article/Mews-Glossary-for-Open-API-users?language=en_US).
 
