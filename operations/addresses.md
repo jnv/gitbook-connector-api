@@ -2,6 +2,9 @@
 
 ## Get all addresses
 
+
+
+
 Returns all addresses associated with the specified accounts within the enterprise. This operation uses [Pagination](../guidelines/pagination.md).
 
 ### Request
