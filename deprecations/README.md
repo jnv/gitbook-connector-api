@@ -7,6 +7,9 @@ Historic deprecations that have already been discontinued may not be listed. For
 
 > **Important:** We strongly advise you to review this list and if you are using any of the deprecated items in your integration, to update your implementation accordingly.
 
+
+
+
 The table columns have the following meanings:
 
 * __Feature__ - What entity or feature is being deprecated
