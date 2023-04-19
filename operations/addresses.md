@@ -29,7 +29,7 @@ Returns all addresses associated with the specified accounts within the enterpri
 
 | Property | Type | Contract | Description |
 | :-- | :-- | :-- | :-- |
-| `ClientToken` | string | required | Token identifying the client application. |
+| `ClientToken` | string | required | Token identifying the client application.erwgrerwg |
 | `AccessToken` | string | required | Access token of the client application. |
 | `Client` | string | required | Name and version of the client application. |
 | `AccountIds` | array of string | optional, max 1000 items | Unique identifiers of [Companies](companies.md#company) or [Customers](customers.md#customer) within the enterprise. Required if no other filter is provided. |
