@@ -807,7 +807,7 @@ Updates information about the specified reservations. Note that if any of the fi
 
 Same structure as in [Get all reservations](#get-all-reservations) operation.
 
-## Confirm reservation
+## Confirm reservations
 
 Marks all specified reservations as `Confirmed`. Succeeds only if all confirmation conditions are met \(the reservations have the `Optional` state\).
 
