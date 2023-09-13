@@ -1,0 +1,4 @@
+You can take payments using the payment request endpoint. By making a payment request you create a page that can be used for taking payments. 
+The repsonse of the paymentRequests/add endpoint will return an ID. If you add this ID in the following URL you can embed the payment page 
+into your custom flow, for instance for booking engines:
+https://app.mews.com/navigator/payment-requests/detail/<paymentrequestID>
