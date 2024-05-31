@@ -2,6 +2,7 @@
 
 ## 3rd June 2024
 * Extended [Cancel reserevation](../operations/reservations.md#cancel-reservation) request with `SendEmail` parameter.
+* Updated the maximum size of time interval for [Rates](../operations/rates.md) and [Services](../operations/services.md) from 24 months to 60 months if `TimeUnit` is `months`.
 
 ## 24th May 2024
 * Extended [Outlet item](../operations/outletitems.md#outlet-item) response object with `PaymentCardPaymentId`, this affects the following operations:
