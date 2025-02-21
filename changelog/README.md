@@ -1,5 +1,8 @@
 # Changelog
 
+## 21st February 2025
+* Added [Migration guide: Get all reservations](../deprecations/migration-guide-get-reservations.md). Documentation-only. No change to API.
+
 ## 20th February 2025
 * Added new restricted operation [Get reservations channel manager details](../operations/reservations.md#get-reservations-channel-manager-details).
 
